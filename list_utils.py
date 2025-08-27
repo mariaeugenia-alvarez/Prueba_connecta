@@ -16,7 +16,7 @@ def find_n(list, needle, n):
             # si lo encuentra: actualizar contador
             if needle == list[index]:
                 count += 1
-            # avanzar al siguiente elemento
+            # avanzar al siguiente elementos
             index += 1
         # devolver el resultado de comparar contador con n
         return count >= n
