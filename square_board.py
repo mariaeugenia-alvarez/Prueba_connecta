@@ -1,5 +1,6 @@
 from linear_board import LinearBoard
 from settings import BOARD_LENGTH
+from list_utils import *
 
 
 class SquareBoard:
@@ -25,6 +26,10 @@ class SquareBoard:
             result = result and lb.is_full()
         return result
 
+    def as_matrix(self):
+        """Devuelve una representación en formato matriz, es decir lista de listas"""
+        return list(map(lambda element: element._column, self._columns))
+
     def is_victory(self, char):
         return (
             self._any_vertical_victory(char)
@@ -40,7 +45,9 @@ class SquareBoard:
         return result
 
     def _any_horizontal_victory(self, char):
-        return False
+        transposed_columns = transpose(self.as_matrix())
+        tmp = SquareBoard.fromList(transposed_columns)
+        return tmp._any_vertical_victory(char)
 
     def _any_rising_victory(self, char):
         return False

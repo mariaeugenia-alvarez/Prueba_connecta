@@ -48,3 +48,26 @@ def find_streak(list, needle, n):
         return count >= n and streak
     else:
         return False
+
+
+def first_elements(list_of_lists):
+    """Devuelve una lista con los primeros elementos de cada lista"""
+    return nth_elements(list_of_lists, 0)
+
+    # guardo el primer elemento de la lista y avanzo a la siguiente
+    # devuelvo la lista
+
+
+def nth_elements(list_of_lists, n):
+    """Devuelve una lista con los enésimos elementos de cada lista"""
+    list = []
+    for l in list_of_lists:
+        list.append(l[n])
+    return list
+
+
+def transpose(matrix):
+    matrix_t = []
+    for n in range(len(matrix[0])):
+        matrix_t.append(nth_elements(matrix, n))
+    return matrix_t
